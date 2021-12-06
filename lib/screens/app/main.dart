@@ -1,5 +1,8 @@
+import 'package:crypto_tracker/config/routes.dart';
 import 'package:crypto_tracker/config/theme.dart';
 import 'package:crypto_tracker/repos/local/app_preferences.dart';
+import 'package:crypto_tracker/screens/splash/splash_bloc.dart';
+import 'package:crypto_tracker/screens/splash/splash_event.dart';
 import 'package:crypto_tracker/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,15 +27,17 @@ class CryptoTracker extends StatelessWidget {
         RepositoryProvider<AppPreferences>(create: (context) => AppPreferencesImpl()),
       ],
       child: BlocProvider(
-        create: (context) => AppBloc(
-          preferences: RepositoryProvider.of<AppPreferences>(context)
-        )..add(AppInitializeEvent()),
+        create: (context) => AppBloc(preferences: RepositoryProvider.of<AppPreferences>(context))
+          ..add(AppInitializeEvent()),
         child: BlocBuilder<AppBloc, AppState>(
           builder: (context, state) {
             Widget home = Container();
 
             if (state is AppReady) {
-              home = const SplashScreen();
+              home = BlocProvider(
+                create: (context) => SplashBloc()..add(SplashInitializeEvent()),
+                child: const SplashScreen(),
+              );
             }
 
             if (state is AppChangeDarkMode) {
@@ -44,6 +49,7 @@ class CryptoTracker extends StatelessWidget {
               theme: CryptoTrackerTheme.lightMode(context),
               darkTheme: CryptoTrackerTheme.darkMode(context),
               themeMode: themeMode,
+              routes: cryptoTrackerRoutes,
               home: home,
             );
           },
