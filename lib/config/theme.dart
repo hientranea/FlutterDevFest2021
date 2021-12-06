@@ -15,8 +15,10 @@ class CryptoTrackerTheme {
       ),
       appBarTheme: const AppBarTheme(elevation: 0.0, backgroundColor: Colors.white),
       textTheme: Theme.of(context).textTheme.apply(
+            fontFamily: 'Oxygen',
             bodyColor: CryptoTrackerColors.smokyBlack,
-          ), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: CryptoTrackerColors.accentColor),
+          ),
+      colorScheme: ColorScheme.fromSwatch().copyWith(secondary: CryptoTrackerColors.accentColor),
     );
   }
 
@@ -34,6 +36,7 @@ class CryptoTrackerTheme {
       appBarTheme:
           const AppBarTheme(elevation: 0.0, backgroundColor: CryptoTrackerColors.darkPrimaryColor),
       textTheme: Theme.of(context).textTheme.apply(
+            fontFamily: 'Oxygen',
             bodyColor: const Color(0xFFF6F6F6),
           ),
     );
