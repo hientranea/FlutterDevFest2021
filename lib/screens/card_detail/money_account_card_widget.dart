@@ -2,14 +2,16 @@ import 'package:crypto_tracker/config/crypto_tracker_color.dart';
 import 'package:flutter/material.dart';
 
 class MoneyAccountCard extends StatelessWidget {
-  const MoneyAccountCard({
+  final String amount;
+  final String last4;
+  const MoneyAccountCard(this.amount, this.last4, {
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: MediaQuery.of(context).size.width * 0.9,
       height: 100.0,
       padding: const EdgeInsets.all(20.0),
       margin: const EdgeInsets.all(20.0),
@@ -37,14 +39,14 @@ class MoneyAccountCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               // mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text(
+              children:  [
+                const Text(
                   'VISA',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 Text(
-                  'Mastercard . 9390',
-                  style: TextStyle(
+                  'Mastercard . $last4',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black45,
                   ),
@@ -52,9 +54,9 @@ class MoneyAccountCard extends StatelessWidget {
               ],
             ),
           ),
-          const Text(
-            '\$3 520.45',
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Text(
+            amount,
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
       ),

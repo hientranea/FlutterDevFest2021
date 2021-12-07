@@ -2,6 +2,8 @@ import 'package:crypto_tracker/config/crypto_tracker_color.dart';
 import 'package:crypto_tracker/repos/models/crypto_currency.dart';
 import 'package:crypto_tracker/repos/models/transaction.dart';
 import 'package:crypto_tracker/repos/remote/crypto_repository.dart';
+import 'package:crypto_tracker/screens/card_detail/card_detail_screen.dart';
+import 'package:crypto_tracker/screens/card_detail/money_account_card_widget.dart';
 import 'package:crypto_tracker/screens/currencydetail/currency_detail_screen.dart';
 import 'package:crypto_tracker/screens/dashboard/dashboard_bloc.dart';
 import 'package:crypto_tracker/screens/home/home_bloc.dart';
@@ -85,32 +87,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   _cardList() {
+    // Mock data
     return ListView(
       scrollDirection: Axis.horizontal,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            border: Border.all(width: 1, color: CryptoTrackerColors.primaryColor),
-          ),
-          padding: const EdgeInsets.all(15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text("VISA", style: TextStyle(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 10),
-                  Text("Mastercard * 9390",
-                      style: TextStyle(
-                          color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.7)))
-                ],
-              ),
-              const SizedBox(width: 30),
-              const Text("\$3,520.45",  style: TextStyle(fontWeight: FontWeight.bold))
-            ],
-          ),
+        GestureDetector(
+          onTap: () => Navigator.pushNamed(context, CardDetailScreen.routeName),
+          child:  MoneyAccountCard("\$3,520.45", "9390"),
+        ),
+        GestureDetector(
+          onTap: () => Navigator.pushNamed(context, CardDetailScreen.routeName),
+          child:  MoneyAccountCard("\$520.45", "3537"),
+        ),
+        GestureDetector(
+          onTap: () => Navigator.pushNamed(context, CardDetailScreen.routeName),
+          child:  MoneyAccountCard("\$99999520.45", "4242"),
         )
       ],
     );
@@ -164,7 +155,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 80,
+                  height: 123,
                   child: _cardList(),
                 ),
                 const SizedBox(height: 25),
