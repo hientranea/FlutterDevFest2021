@@ -1,6 +1,7 @@
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
 import 'package:crypto_tracker/screens/common/avatar_by_name.dart';
 import 'package:crypto_tracker/screens/my_wallet/my_wallet_screen.dart';
+import 'package:crypto_tracker/screens/setting/setting_screen.dart';
 import 'package:crypto_tracker/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -88,9 +89,9 @@ class AccountScreen extends StatelessWidget {
               context,
               Icons.settings,
               "Setting",
-              subtitle: "Language, Dark mode",
+              subtitle: "Dark mode",
               onTap: () {
-                // Navigator.of(context).pushNamed(SettingScreen.ROUTE_NAME);
+                Navigator.of(context).pushNamed(SettingScreen.routeName);
               },
             ),
             ..._settingSection(context, Icons.lock_outline, "Term & Privacy", hasBottomLine: false),
