@@ -40,4 +40,5 @@ flutter:
   assets:
     - assets/images/
     - assets/images/card_dummy/
+    - assets/images/contact_dummy/
     - assets/icons/
