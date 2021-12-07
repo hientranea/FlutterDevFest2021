@@ -35,6 +35,7 @@ class _CurrencyDetailScreenState extends State<CurrencyDetailScreen> {
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
+              centerTitle: true,
               title: Text(
                 "Activity",
                 style: TextStyle(

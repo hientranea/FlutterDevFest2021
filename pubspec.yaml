@@ -1,5 +1,5 @@
 name: crypto_tracker
-description: Cryptor Tracker - Team 22
+description: Crypto Tracker - Team 22
 
 publish_to: 'none'
 
@@ -17,6 +17,7 @@ dependencies:
   fl_chart: ^0.40.5
   flutter_bloc: ^7.0.1
   shared_preferences: ^2.0.5
+  font_awesome_flutter: ^9.2.0
 
 dev_dependencies:
   flutter_test:
@@ -39,3 +40,6 @@ flutter:
           weight: 800
   assets:
     - assets/images/
+    - assets/images/card_dummy/
+    - assets/images/contact_dummy/
+    - assets/icons/

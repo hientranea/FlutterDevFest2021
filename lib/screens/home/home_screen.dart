@@ -1,3 +1,4 @@
+import 'package:crypto_tracker/screens/account/account_screen.dart';
 import 'package:crypto_tracker/screens/currencydetail/currency_detail_screen.dart';
 import 'package:crypto_tracker/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const DashboardScreen(),
     const DummyScreen("Market"),
     const DummyScreen("History"),
-    const DummyScreen("Account"),
+    const AccountScreen(),
   ];
 
   @override
