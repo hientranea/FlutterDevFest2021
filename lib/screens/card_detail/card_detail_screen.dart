@@ -1,4 +1,5 @@
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
+import 'package:crypto_tracker/repos/models/money_account.dart';
 import 'package:crypto_tracker/screens/card_detail/cash_back_title.dart';
 import 'package:crypto_tracker/screens/card_detail/currency_changed.dart';
 import 'package:crypto_tracker/screens/card_detail/money_account_card_widget.dart';
@@ -10,7 +11,10 @@ import 'package:flutter/material.dart';
 class CardDetailScreen extends StatelessWidget {
   static const routeName = "home/card_detail";
 
-  const CardDetailScreen({Key? key}) : super(key: key);
+  final List<MoneyAccount> moneyAccounts;
+
+  const CardDetailScreen({Key? key, required this.moneyAccounts})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +28,13 @@ class CardDetailScreen extends StatelessWidget {
             fontSize: 20,
           ),
         ),
-        backgroundColor:
-            isDarkMode() ? CryptoTrackerColors.darkBackground : CryptoTrackerColors.appBarShadow,
+        backgroundColor: isDarkMode()
+            ? CryptoTrackerColors.darkBackground
+            : CryptoTrackerColors.appBarShadow,
         iconTheme: IconThemeData(
-            color: isDarkMode() ? const Color(0xFFF6F6F6) : CryptoTrackerColors.heading),
+            color: isDarkMode()
+                ? const Color(0xFFF6F6F6)
+                : CryptoTrackerColors.heading),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -41,12 +48,16 @@ class CardDetailScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(color: Theme.of(context).scaffoldBackgroundColor),
+          decoration:
+              BoxDecoration(color: Theme.of(context).scaffoldBackgroundColor),
           child: Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: Column(
               children: [
-                const MoneyAccountCard("\$3,520.45", "9390"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: _cardList(),
+                ),
                 const CurrencyChanged(),
                 const PremiumAccountPromote(),
                 const CashBackTitle(),
@@ -75,6 +86,30 @@ class CardDetailScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _cardList() {
+    // Mock data
+    return SizedBox(
+      height: 96,
+      child: ListView.separated(
+        padding: EdgeInsets.zero,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final moneyAccount = moneyAccounts[index];
+          return GestureDetector(
+            onTap: (){
+              for (final account in moneyAccounts) {
+                account.isSelected = moneyAccount.name == account.name;
+              }
+            },
+            child: MoneyAccountCard(moneyAccount: moneyAccount),
+          );
+        },
+        separatorBuilder: (context, index) => const SizedBox(width: 16),
+        itemCount: moneyAccounts.length,
       ),
     );
   }
