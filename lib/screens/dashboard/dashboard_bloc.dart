@@ -12,7 +12,6 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   @override
   Stream<DashboardState> mapEventToState(DashboardEvent event) async* {
     if (event is DashboardInitializeEvent) {
-      print("DashboardInitializeEvent");
       final data = await repository.getCryptoCurrencies();
 
       yield DashboardFetchCryptoCurrencies(data);

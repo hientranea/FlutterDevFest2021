@@ -1,5 +1,6 @@
 import 'package:crypto_tracker/repos/models/crypto_currency.dart';
 import 'package:crypto_tracker/repos/remote/crypto_repository.dart';
+import 'package:crypto_tracker/screens/currencydetail/currency_detail_screen.dart';
 import 'package:crypto_tracker/screens/dashboard/dashboard_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +32,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
               itemCount: _cryptoCurrencies.length,
               itemBuilder: (context, index) {
                 final currency = _cryptoCurrencies[index];
-                return Container(
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  child: Text("$index. ${currency.name}: ${currency.price.usd.price}"),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, CurrencyDetailScreen.routeName);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                    child: Text("$index. ${currency.name}: ${currency.price.usd.price}"),
+                  ),
                 );
               },
             ),
