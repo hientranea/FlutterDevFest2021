@@ -10,7 +10,11 @@ class CurrencyPrice extends BaseModel {
   @JsonKey(name: "USD")
   final Price usd;
 
-  CurrencyPrice(this.usd);
+  @JsonKey(defaultValue: "")
+  // Mock attribute
+  final String timestamp;
+
+  CurrencyPrice(this.usd, this.timestamp);
 
   factory CurrencyPrice.fromJson(Map<String, dynamic> json) => _$CurrencyPriceFromJson(json);
 

@@ -1,3 +1,4 @@
+import 'package:crypto_tracker/screens/currencydetail/currency_detail_screen.dart';
 import 'package:crypto_tracker/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

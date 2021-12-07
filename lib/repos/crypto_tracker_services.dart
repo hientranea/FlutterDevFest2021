@@ -71,12 +71,10 @@ class CryptoTrackerServicesImpl implements CryptoTrackerServices {
       {Map<String, dynamic>? queryParams}) async {
     Map<String, dynamic> rawData;
     try {
-      print(prepareRequestUrl(serviceName));
       var response = await _dio.get(prepareRequestUrl(serviceName), queryParameters: queryParams);
       rawData = _normalizeResponse(response.data);
       return CryptoTrackerServiceHelper.convert<T>(rawData);
     } on DioError catch (error) {
-      print(error);
       return Resource<T>.fail(error.message);
     }
   }

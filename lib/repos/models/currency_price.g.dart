@@ -9,10 +9,12 @@ part of 'currency_price.dart';
 CurrencyPrice _$CurrencyPriceFromJson(Map<String, dynamic> json) {
   return CurrencyPrice(
     Price.fromJson(json['USD'] as Map<String, dynamic>),
+    json['timestamp'] as String? ?? '',
   );
 }
 
 Map<String, dynamic> _$CurrencyPriceToJson(CurrencyPrice instance) =>
     <String, dynamic>{
       'USD': instance.usd,
+      'timestamp': instance.timestamp,
     };
