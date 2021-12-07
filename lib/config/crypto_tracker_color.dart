@@ -13,6 +13,8 @@ class CryptoTrackerColors {
   static const grey200 = Color(0xFFEEEEEE);
   static const grey300 = Color(0xFFE5E5E5);
   static const grey600 = Color(0xFF546E7A);
+  static const title = Color(0xFF656565);
+  static const subtitle = Color(0xFF9B9B9B);
 
   static const darkPrimaryColor = Color(0xFFBB86FC);
   static const darkBackground = Color(0xFF1E1F28);

@@ -1,7 +1,11 @@
+import 'package:crypto_tracker/config/crypto_tracker_color.dart';
+import 'package:crypto_tracker/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyWalletScreen extends StatelessWidget {
+  static const routeName = "/account/my_wallet";
+
   const MyWalletScreen({Key? key}) : super(key: key);
 
   @override
@@ -9,10 +13,12 @@ class MyWalletScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'My Wallet',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         ),
+        iconTheme: IconThemeData(
+            color: isDarkMode() ? const Color(0xFFF6F6F6) : CryptoTrackerColors.heading),
       ),
       body: SizedBox(
         width: double.infinity,
