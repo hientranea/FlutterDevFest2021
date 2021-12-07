@@ -1,3 +1,4 @@
+import 'package:crypto_tracker/screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _widgetOptions = <Widget>[
-    const DummyScreen("Home"),
+    const DashboardScreen(),
     const DummyScreen("Market"),
     const DummyScreen("History"),
     const DummyScreen("Account"),

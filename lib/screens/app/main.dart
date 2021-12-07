@@ -1,6 +1,8 @@
 import 'package:crypto_tracker/config/routes.dart';
 import 'package:crypto_tracker/config/theme.dart';
+import 'package:crypto_tracker/repos/crypto_tracker_services.dart';
 import 'package:crypto_tracker/repos/local/app_preferences.dart';
+import 'package:crypto_tracker/repos/remote/crypto_repository.dart';
 import 'package:crypto_tracker/screens/splash/splash_bloc.dart';
 import 'package:crypto_tracker/screens/splash/splash_event.dart';
 import 'package:crypto_tracker/screens/splash/splash_screen.dart';
@@ -14,21 +16,25 @@ import 'app_state.dart';
 var themeMode = ThemeMode.light;
 
 void main() {
-  runApp(const CryptoTracker());
+  runApp(CryptoTracker());
 }
 
 class CryptoTracker extends StatelessWidget {
-  const CryptoTracker({Key? key}) : super(key: key);
+  CryptoTracker({Key? key}) : super(key: key);
+  final CryptoTrackerServices _services = CryptoTrackerServicesImpl();
 
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AppPreferences>(create: (context) => AppPreferencesImpl()),
+        RepositoryProvider<CryptoRepository>(create: (context) => CryptoRepositoryImpl()),
       ],
       child: BlocProvider(
-        create: (context) => AppBloc(preferences: RepositoryProvider.of<AppPreferences>(context))
-          ..add(AppInitializeEvent()),
+        create: (context) => AppBloc(
+          preferences: RepositoryProvider.of<AppPreferences>(context),
+          services: _services,
+        )..add(AppInitializeEvent()),
         child: BlocBuilder<AppBloc, AppState>(
           builder: (context, state) {
             Widget home = Container();
