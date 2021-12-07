@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     const DashboardScreen(),
-    const DummyScreen("Market"),
+    const DummyScreen("Coming soon..."),
     const TransactionHistoriesScreen(),
     const AccountScreen()
   ];
