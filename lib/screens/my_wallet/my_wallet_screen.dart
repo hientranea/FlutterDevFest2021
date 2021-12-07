@@ -18,7 +18,10 @@ class MyWalletScreen extends StatelessWidget {
           style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color),
         ),
         iconTheme: IconThemeData(
-            color: isDarkMode() ? const Color(0xFFF6F6F6) : CryptoTrackerColors.heading),
+          color: isDarkMode()
+              ? const Color(0xFFF6F6F6)
+              : CryptoTrackerColors.heading,
+        ),
       ),
       body: SizedBox(
         width: double.infinity,
@@ -26,7 +29,6 @@ class MyWalletScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Text('Available Balance'),
                 const Text(
@@ -34,7 +36,7 @@ class MyWalletScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
-                _walletGridMenu(),
+                _walletGridMenu(context),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -150,7 +152,7 @@ class MyWalletScreen extends StatelessWidget {
         ),
       );
 
-  Widget _walletGridMenu() => GridView.count(
+  Widget _walletGridMenu(BuildContext context) => GridView.count(
         primary: false,
         shrinkWrap: true,
         crossAxisCount: 3,
@@ -158,45 +160,53 @@ class MyWalletScreen extends StatelessWidget {
         mainAxisSpacing: 10,
         padding: const EdgeInsets.all(20),
         children: [
-          _menuIcon(
+          MenuIcon(
             label: 'Dashboard',
             icon: const Icon(Icons.dashboard_outlined),
             onTap: () {},
           ),
-          _menuIcon(
+          MenuIcon(
             label: 'Set Limits',
             icon: const Icon(FontAwesomeIcons.lessThanEqual),
             onTap: () {},
           ),
-          _menuIcon(
+          MenuIcon(
             label: 'Withdraw',
-            icon: Image.asset('assets/icons/money-withdrawal.png'),
+            icon: const Icon(FontAwesomeIcons.moneyCheck),
             onTap: () {},
           ),
-          _menuIcon(
+          MenuIcon(
             label: 'Load Funds',
             icon: const Icon(FontAwesomeIcons.moneyBillAlt),
             onTap: () {},
           ),
-          _menuIcon(
+          MenuIcon(
             label: 'Transfer',
             icon: const Icon(FontAwesomeIcons.exchangeAlt),
-            onTap: () {},
+            onTap: () => Navigator.pushNamed(context, '/transfer'),
           ),
-          _menuIcon(
+          MenuIcon(
             label: 'Block Card',
             icon: const Icon(FontAwesomeIcons.ccDinersClub),
             onTap: () {},
           ),
         ],
       );
+}
 
-  Widget _menuIcon({
-    required String label,
-    required Widget icon,
-    required VoidCallback onTap,
-  }) =>
-      InkWell(
+class MenuIcon extends StatelessWidget {
+  final String label;
+  final Widget icon;
+  final VoidCallback onTap;
+  const MenuIcon({
+    Key? key,
+    required this.label,
+    required this.icon,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(16)),
         onTap: onTap,
         child: Column(

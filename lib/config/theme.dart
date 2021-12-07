@@ -13,12 +13,14 @@ class CryptoTrackerTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(primary: CryptoTrackerColors.smokyBlack),
       ),
-      appBarTheme: const AppBarTheme(elevation: 0.0, backgroundColor: Colors.white),
+      appBarTheme:
+          const AppBarTheme(elevation: 0.0, backgroundColor: Colors.white),
       textTheme: Theme.of(context).textTheme.apply(
             fontFamily: 'Oxygen',
             bodyColor: CryptoTrackerColors.smokyBlack,
           ),
-      colorScheme: ColorScheme.fromSwatch().copyWith(secondary: CryptoTrackerColors.accentColor),
+      colorScheme: ColorScheme.fromSwatch()
+          .copyWith(secondary: CryptoTrackerColors.accentColor),
     );
   }
 
@@ -30,11 +32,13 @@ class CryptoTrackerTheme {
       unselectedWidgetColor: CryptoTrackerColors.darkPrimaryColor,
       cardColor: CryptoTrackerColors.darkCardBackground,
       shadowColor: CryptoTrackerColors.containerShadow,
+      iconTheme: const IconThemeData(color: Color(0xFFF6F6F6)),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(primary: const Color(0xFFF6F6F6)),
       ),
-      appBarTheme:
-          const AppBarTheme(elevation: 0.0, backgroundColor: CryptoTrackerColors.darkPrimaryColor),
+      appBarTheme: const AppBarTheme(
+          elevation: 0.0,
+          backgroundColor: CryptoTrackerColors.darkPrimaryColor),
       textTheme: Theme.of(context).textTheme.apply(
             fontFamily: 'Oxygen',
             bodyColor: const Color(0xFFF6F6F6),
