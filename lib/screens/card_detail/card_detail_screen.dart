@@ -1,5 +1,6 @@
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
 import 'package:crypto_tracker/repos/models/money_account.dart';
+import 'package:crypto_tracker/screens/card_detail/card_list.dart';
 import 'package:crypto_tracker/screens/card_detail/cash_back_title.dart';
 import 'package:crypto_tracker/screens/card_detail/currency_changed.dart';
 import 'package:crypto_tracker/screens/card_detail/money_account_card_widget.dart';
@@ -54,9 +55,9 @@ class CardDetailScreen extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 20),
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: _cardList(),
+                CardList(
+                  moneyAccounts: moneyAccounts,
+                  showIconSelect: true,
                 ),
                 const CurrencyChanged(),
                 const PremiumAccountPromote(),
@@ -78,7 +79,7 @@ class CardDetailScreen extends StatelessWidget {
                 RoundedCard(
                   title: 'David',
                   time: '6:46 pm',
-                  price: 0.00,
+                  price: -3.00,
                   icon: Icons.brunch_dining,
                   iconBackgroundColor: Colors.red[700],
                 ),
@@ -86,30 +87,6 @@ class CardDetailScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _cardList() {
-    // Mock data
-    return SizedBox(
-      height: 96,
-      child: ListView.separated(
-        padding: EdgeInsets.zero,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          final moneyAccount = moneyAccounts[index];
-          return GestureDetector(
-            onTap: (){
-              for (final account in moneyAccounts) {
-                account.isSelected = moneyAccount.name == account.name;
-              }
-            },
-            child: MoneyAccountCard(moneyAccount: moneyAccount),
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(width: 16),
-        itemCount: moneyAccounts.length,
       ),
     );
   }

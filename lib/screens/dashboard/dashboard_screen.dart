@@ -5,6 +5,7 @@ import 'package:crypto_tracker/repos/models/money_account.dart';
 import 'package:crypto_tracker/repos/models/transaction.dart';
 import 'package:crypto_tracker/repos/remote/crypto_repository.dart';
 import 'package:crypto_tracker/screens/card_detail/card_detail_screen.dart';
+import 'package:crypto_tracker/screens/card_detail/card_list.dart';
 import 'package:crypto_tracker/screens/card_detail/money_account_card_widget.dart';
 import 'package:crypto_tracker/screens/currencydetail/currency_detail_screen.dart';
 import 'package:crypto_tracker/screens/dashboard/dashboard_bloc.dart';
@@ -66,7 +67,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget _heading(String text, {bool hasViewAll = false}) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       margin: const EdgeInsets.only(bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +76,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             text,
             style: TextStyle(
               fontSize: 20,
-              color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.7),
+              color: Theme.of(context)
+                  .textTheme
+                  .bodyText1!
+                  .color!
+                  .withOpacity(0.7),
             ),
           ),
           if (hasViewAll)
@@ -85,7 +90,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 bloc.add(SelectTabEvent(2));
               },
               child: const Text("See all >",
-                  style: TextStyle(fontSize: 15, color: CryptoTrackerColors.primaryColor)),
+                  style: TextStyle(
+                      fontSize: 15, color: CryptoTrackerColors.primaryColor)),
             ),
         ],
       ),
@@ -95,7 +101,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget _buildBalance() {
     final balance = _moneyAccounts.map((e) => e.amount).toList().sum;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -103,7 +109,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             'Balance',
             style: TextStyle(
               fontSize: 16,
-              color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.7),
+              color: Theme.of(context)
+                  .textTheme
+                  .bodyText1!
+                  .color!
+                  .withOpacity(0.7),
             ),
           ),
           const SizedBox(height: 8),
@@ -112,42 +122,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
           ),
           const SizedBox(height: 16),
-          _cardList(),
         ],
       ),
     );
   }
 
-  Widget _cardList() {
-    // Mock data
-    return SizedBox(
-      height: 96,
-      child: ListView.separated(
-        padding: EdgeInsets.zero,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          final moneyAccount = _moneyAccounts[index];
-          return GestureDetector(
-            onTap: () {
-              for (final account in _moneyAccounts) {
-                account.isSelected = moneyAccount.name == account.name;
-              }
-              Navigator.pushNamed(context, CardDetailScreen.routeName, arguments: _moneyAccounts);
-            },
-            child: MoneyAccountCard(
-              moneyAccount: moneyAccount,
-              isSelected: false,
-            ),
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(width: 16),
-        itemCount: _moneyAccounts.length,
-      ),
-    );
-  }
-
   Widget _cryptoList() {
-    return ListView.builder(
+    return ListView.separated(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       scrollDirection: Axis.horizontal,
       itemCount: _cryptoCurrencies.length,
       itemBuilder: (context, index) {
@@ -159,7 +141,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           child: Container(
             height: 100,
             width: 150,
-            margin: const EdgeInsets.only(left: 10),
             decoration: BoxDecoration(
                 image: const DecorationImage(
                   image: AssetImage("assets/images/coin_bg.png"),
@@ -195,7 +176,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Text(
                       doubleFormat(currency.price.usd.price),
                       style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
                     ),
                     const Text(
                       ' USD',
@@ -212,38 +195,44 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         );
       },
+      separatorBuilder: (context, index) => const SizedBox(width: 16),
     );
   }
 
   //Mock data
   _transactionList() {
-    const padding = EdgeInsets.symmetric(horizontal: 10);
+    const padding = EdgeInsets.symmetric(horizontal: 16);
     return [
       Padding(
           padding: padding,
-          child: TransactionCard(Transaction(1000, "Bob", "transfer", "2021-12-06T03:06:55.668Z"))),
+          child: TransactionCard(Transaction(
+              1000, "Bob", "transfer", "2021-12-06T03:06:55.668Z"))),
+      Padding(
+          padding: padding,
+          child: TransactionCard(Transaction(
+              -2000, "Shopping", "shopping", "2021-12-05T03:06:55.668Z"))),
       Padding(
           padding: padding,
           child: TransactionCard(
-              Transaction(-2000, "Shopping", "shopping", "2021-12-05T03:06:55.668Z"))),
-      Padding(
-          padding: padding,
-          child: TransactionCard(Transaction(500, "Alex", "transfer", "2021-11-01T03:06:55.668Z")))
+              Transaction(500, "Alex", "transfer", "2021-11-01T03:06:55.668Z")))
     ];
   }
 
   @override
   void initState() {
-    _moneyAccounts.add(MoneyAccount("VISA", 'Mastercard .9090', Constants.icMasterCard, 3520.45));
-    _moneyAccounts.add(MoneyAccount("Paypal", 'group22@gmail.com', Constants.icPaypal, 2158.45));
+    _moneyAccounts.add(MoneyAccount(
+        "VISA", 'Mastercard .9090', Constants.icMasterCard, 3520.45));
+    _moneyAccounts.add(MoneyAccount(
+        "Paypal", 'group22@gmail.com', Constants.icPaypal, 2158.45));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DashboardBloc>(
-      create: (context) => DashboardBloc(RepositoryProvider.of<CryptoRepository>(context))
-        ..add(DashboardInitializeEvent()),
+      create: (context) =>
+          DashboardBloc(RepositoryProvider.of<CryptoRepository>(context))
+            ..add(DashboardInitializeEvent()),
       child: BlocConsumer<DashboardBloc, DashboardState>(
         listener: _setListener,
         builder: (context, state) {
@@ -254,6 +243,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
               children: [
                 const SizedBox(height: 40),
                 _buildBalance(),
+                CardList(
+                  moneyAccounts: _moneyAccounts,
+                  onSelected: (_) {
+                    Navigator.pushNamed(context, CardDetailScreen.routeName,
+                        arguments: _moneyAccounts);
+                  },
+                ),
                 const SizedBox(height: 25),
                 _heading("Activity"),
                 SizedBox(

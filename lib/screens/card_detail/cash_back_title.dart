@@ -25,7 +25,7 @@ class CashBackTitle extends StatelessWidget {
           Row(
             children: const [
               Text(
-                'Sea all',
+                'See all',
                 style: TextStyle(
                   color: CryptoTrackerColors.primaryColor,
                   fontWeight: FontWeight.w600,

@@ -7,6 +7,7 @@ import 'package:crypto_tracker/screens/splash/splash_bloc.dart';
 import 'package:crypto_tracker/screens/splash/splash_event.dart';
 import 'package:crypto_tracker/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_bloc.dart';
@@ -15,7 +16,12 @@ import 'app_state.dart';
 
 var themeMode = ThemeMode.light;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(CryptoTracker());
 }
 
@@ -27,8 +33,10 @@ class CryptoTracker extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider<AppPreferences>(create: (context) => AppPreferencesImpl()),
-        RepositoryProvider<CryptoRepository>(create: (context) => CryptoRepositoryImpl()),
+        RepositoryProvider<AppPreferences>(
+            create: (context) => AppPreferencesImpl()),
+        RepositoryProvider<CryptoRepository>(
+            create: (context) => CryptoRepositoryImpl()),
       ],
       child: BlocProvider(
         create: (context) => AppBloc(

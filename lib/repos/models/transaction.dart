@@ -1,3 +1,4 @@
+import 'package:crypto_tracker/utils/num.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -34,7 +35,7 @@ class Transaction extends BaseModel {
   }
 
   String get formattedAmount {
-    return (amount > 0) ? "\$$amount" : "-\$${-amount}";
+    return (amount > 0) ? "\$${doubleFormat(amount)}" : "-\$${doubleFormat(amount.abs())}";
   }
 
   Color get colorByType {

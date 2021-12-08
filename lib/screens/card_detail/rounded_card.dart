@@ -72,7 +72,7 @@ class RoundedCard extends StatelessWidget {
             ),
           ),
           Text(
-            price > 0 ? '+\$$price' : '-\$$price',
+            price > 0 ? '+\$$price' : '-\$${price.abs()}',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
