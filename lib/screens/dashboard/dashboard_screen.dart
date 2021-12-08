@@ -161,10 +161,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             width: 150,
             margin: const EdgeInsets.only(left: 10),
             decoration: BoxDecoration(
-                image: const DecorationImage(
-                  image: AssetImage("assets/images/coin_bg.png"),
-                  fit: BoxFit.fill,
-                ),
+                image:
+                    const DecorationImage(image: AssetImage(Constants.icCoinBg), fit: BoxFit.fill),
                 borderRadius: BorderRadius.circular(15.0)),
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             child: Column(

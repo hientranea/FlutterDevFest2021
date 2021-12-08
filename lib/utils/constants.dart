@@ -6,4 +6,6 @@ class Constants {
   static const icAvatarDefault = "assets/images/person.jpg";
   static const icMasterCard = "assets/images/ic_master_card.png";
   static const icPaypal = "assets/images/ic_paypal.png";
+  static const icCoinBg = "assets/images/coin_bg.png";
+  static const tosUrl = "https://devfesthcm.com/";
 }

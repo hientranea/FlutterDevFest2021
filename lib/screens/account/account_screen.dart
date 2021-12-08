@@ -2,8 +2,10 @@ import 'package:crypto_tracker/config/crypto_tracker_color.dart';
 import 'package:crypto_tracker/screens/common/avatar_by_name.dart';
 import 'package:crypto_tracker/screens/my_wallet/my_wallet_screen.dart';
 import 'package:crypto_tracker/screens/setting/setting_screen.dart';
+import 'package:crypto_tracker/utils/constants.dart';
 import 'package:crypto_tracker/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -94,7 +96,15 @@ class AccountScreen extends StatelessWidget {
                 Navigator.of(context).pushNamed(SettingScreen.routeName);
               },
             ),
-            ..._settingSection(context, Icons.lock_outline, "Term & Privacy", hasBottomLine: false),
+            ..._settingSection(
+              context,
+              Icons.lock_outline,
+              "Term & Privacy",
+              hasBottomLine: false,
+              onTap: () async {
+                !await launch(Constants.tosUrl, forceSafariVC: false, forceWebView: false);
+              },
+            )
           ],
         ),
       ),
