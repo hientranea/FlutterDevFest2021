@@ -1,5 +1,6 @@
 # Crypto Tracker
 Team 22
+
 An app built for [DevFest 20201 - Flutter Challenge](https://devfesthcm.com/).
 
 ## Features
@@ -7,26 +8,25 @@ An app built for [DevFest 20201 - Flutter Challenge](https://devfesthcm.com/).
 ### View crypto currency price
 
 Data is fetched directly from [CoinMarketCap](https://coinmarketcap.com/api/documentation/v1/#section/Introduction).
-![Home screen](./screenshots/home_screen.png)
-![Currency detail](./screenshots/crypto_currency_detail.png)
+
+<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/home_screen.png" width="400"/> <img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/crypto_currency_detail.png" width="400"/>
+
 
 ### Manage transaction history
 
 Users can manage their transactions and filter the data by date
 
-![transaction_histories](./screenshots/transaction_histories.png)
-![transaction_filter_by_date](./screenshots/transaction_filter_by_date.png)
+<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transaction_histories.png" width="400"/> <img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transaction_filter_by_date.png" width="400"/>
 
 
 ### Manage payment cards
-![card_detail](./screenshots/card_detail.png)
+<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/card_detail.png" width="400"/>
 
 ### Manage payment wallet
-![my_wallet](./screenshots/my_wallet.png)
+<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/my_wallet.png" width="400"/>
 
 ### Transfer
-![transfer1](./screenshots/transfer1.png)
-![transfer2](./screenshots/transfer2.png)
+<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transfer1.png" width="400"/> <img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transfer2.png" width="400"/>
 
 ### Others
 
