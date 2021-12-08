@@ -1,4 +1,5 @@
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
+import 'package:crypto_tracker/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +33,7 @@ class AppBottomNavigation extends StatelessWidget {
     return Container(
       color: CryptoTrackerColors.primaryColor,
       child: BottomNavigationBar(
-        backgroundColor: CryptoTrackerColors.bottomBarBackground,
+        backgroundColor: isDarkMode() ? CryptoTrackerColors.darkBackground : CryptoTrackerColors.bottomBarBackground,
         items: allTabs.map((HomeTab tab) {
           return BottomNavigationBarItem(icon: Icon(tab.icon), label: tab.title);
         }).toList(),

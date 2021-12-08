@@ -27,7 +27,7 @@ class MarketCard extends StatelessWidget {
     const subtitleStyle = TextStyle(fontSize: 13);
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: ripple(

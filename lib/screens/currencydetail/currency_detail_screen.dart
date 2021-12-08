@@ -33,7 +33,7 @@ class _CurrencyDetailScreenState extends State<CurrencyDetailScreen> {
         listener: _setListener,
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             appBar: AppBar(
               centerTitle: true,
               title: Text(
@@ -57,9 +57,9 @@ class _CurrencyDetailScreenState extends State<CurrencyDetailScreen> {
                   child: PriceChart("BTC", _priceHistories),
                 ),
                 Container(
-                  decoration: const BoxDecoration(
-                      color: CryptoTrackerColors.greyBackground2,
-                      borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                      color: isDarkMode() ? CryptoTrackerColors.darkBackground : CryptoTrackerColors.greyBackground2,
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),
                           bottomLeft: Radius.circular(0),
