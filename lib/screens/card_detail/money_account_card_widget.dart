@@ -1,65 +1,91 @@
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
+import 'package:crypto_tracker/repos/models/money_account.dart';
+import 'package:crypto_tracker/utils/num.dart';
 import 'package:flutter/material.dart';
 
 class MoneyAccountCard extends StatelessWidget {
-  final String amount;
-  final String last4;
-  const MoneyAccountCard(this.amount, this.last4, {
+  final MoneyAccount moneyAccount;
+  final bool? isSelected;
+
+  const MoneyAccountCard({
     Key? key,
+    required this.moneyAccount,
+    this.isSelected,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: 100.0,
-      padding: const EdgeInsets.all(20.0),
-      margin: const EdgeInsets.all(20.0),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: CryptoTrackerColors.primaryColor,
-        ),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20.0),
-        ),
-        color: Colors.white,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset(
-            'assets/images/mastercard_logo.png',
-            width: 50,
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children:  [
-                const Text(
-                  'VISA',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                Text(
-                  'Mastercard . $last4',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black45,
-                  ),
-                ),
-              ],
+    // min height = 96
+    return Stack(
+      alignment: AlignmentDirectional.topCenter,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(bottom: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: CryptoTrackerColors.primaryColor,
+              width: 1,
             ),
           ),
-          Text(
-            amount,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 64,
+                child: Image.asset(moneyAccount.logo),
+              ),
+              const SizedBox(width: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    moneyAccount.name,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    moneyAccount.detail,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(width: 16),
+              Text(
+                '\$${doubleFormat(moneyAccount.amount)}',
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+         Positioned(
+          bottom: 0,
+          child: Visibility(
+            visible: isSelected ?? moneyAccount.isSelected,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Icon(
+                Icons.check_circle,
+                color: CryptoTrackerColors.primaryColor,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

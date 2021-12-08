@@ -9,7 +9,7 @@ class PremiumAccountPromote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20.0),
+      margin: const EdgeInsets.all(16.0),
       padding: const EdgeInsets.all(20.0),
       width: double.infinity,
       decoration: BoxDecoration(

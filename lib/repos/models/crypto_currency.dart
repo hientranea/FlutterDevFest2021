@@ -25,4 +25,8 @@ class CryptoCurrency extends BaseModel {
   static CryptoCurrency convertToModel(Map<String, dynamic> json) {
     return CryptoCurrency.fromJson(json);
   }
+
+  String logoUrl({String size = '64x64'}){
+    return 'https://s2.coinmarketcap.com/static/img/coins/$size/$id.png';
+  }
 }
