@@ -82,16 +82,14 @@ class _MarketScreenState extends State<MarketScreen> {
                       const Text(
                         'Volumn 24h:',
                         style:  TextStyle(
-                          fontSize: 13,
-                          color: Colors.black87,
+                          fontSize: 13
                         ),
                       ),
                       const SizedBox(height: 4),
                       const Text(
                         'Volumn change 24h:',
                         style:  TextStyle(
-                          fontSize: 13,
-                          color: Colors.black87,
+                          fontSize: 13
                         ),
                       ),
                     ],
@@ -108,16 +106,14 @@ class _MarketScreenState extends State<MarketScreen> {
                     Text(
                       '\$${doubleFormat(currency.price.usd.volume24h)}',
                       style: const TextStyle(
-                        fontSize: 13,
-                        color: Colors.black87,
+                        fontSize: 13
                       ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       doubleFormat(currency.price.usd.volumeChange24h),
                       style: const TextStyle(
-                        fontSize: 13,
-                        color: Colors.black87,
+                        fontSize: 13
                       ),
                     ),
                   ],
