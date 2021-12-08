@@ -6,7 +6,7 @@ class CryptoTrackerTheme {
   static ThemeData lightMode(BuildContext context) {
     return ThemeData(
       primaryColor: CryptoTrackerColors.primaryColor,
-      scaffoldBackgroundColor: CryptoTrackerColors.greyBackground,
+      scaffoldBackgroundColor: Colors.white,
       unselectedWidgetColor: CryptoTrackerColors.primaryColor,
       cardColor: Colors.white,
       shadowColor: CryptoTrackerColors.containerShadow,

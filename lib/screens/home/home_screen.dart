@@ -1,5 +1,6 @@
 import 'package:crypto_tracker/screens/account/account_screen.dart';
 import 'package:crypto_tracker/screens/dashboard/dashboard_screen.dart';
+import 'package:crypto_tracker/screens/market/market_screen.dart';
 import 'package:crypto_tracker/screens/transaction/transaction_histories_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     const DashboardScreen(),
-    const DummyScreen("Coming soon..."),
+    const MarketScreen(),
     const TransactionHistoriesScreen(),
     const AccountScreen()
   ];

@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 
 class MoneyAccountCard extends StatelessWidget {
   final MoneyAccount moneyAccount;
-  final bool? isSelected;
+  final bool? showIconSelect;
 
   const MoneyAccountCard({
     Key? key,
     required this.moneyAccount,
-    this.isSelected,
+    this.showIconSelect,
   }) : super(key: key);
 
   @override
@@ -61,7 +61,7 @@ class MoneyAccountCard extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: Visibility(
-            visible: isSelected ?? moneyAccount.isSelected,
+            visible: showIconSelect == true ? moneyAccount.isSelected : false,
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
