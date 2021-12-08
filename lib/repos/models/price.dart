@@ -21,8 +21,4 @@ class Price extends BaseModel {
   static Price convertToModel(Map<String, dynamic> json) {
     return Price.fromJson(json);
   }
-
-  String get formattedPrice {
-    return "${price.toStringAsFixed(2)} USD";
-  }
 }
