@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
 import 'package:crypto_tracker/repos/models/crypto_currency.dart';
 import 'package:crypto_tracker/repos/models/money_account.dart';
@@ -16,7 +17,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:collection/collection.dart';
 
 import 'dashboard_event.dart';
 import 'dashboard_state.dart';
@@ -75,11 +75,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             text,
             style: TextStyle(
               fontSize: 20,
-              color: Theme.of(context)
-                  .textTheme
-                  .bodyText1!
-                  .color!
-                  .withOpacity(0.7),
+              color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.7),
             ),
           ),
           if (hasViewAll)
@@ -89,8 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 bloc.add(SelectTabEvent(2));
               },
               child: const Text("See all >",
-                  style: TextStyle(
-                      fontSize: 15, color: CryptoTrackerColors.primaryColor)),
+                  style: TextStyle(fontSize: 15, color: CryptoTrackerColors.primaryColor)),
             ),
         ],
       ),
@@ -108,21 +103,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             'Balance',
             style: TextStyle(
               fontSize: 16,
-              color: Theme.of(context)
-                  .textTheme
-                  .bodyText1!
-                  .color!
-                  .withOpacity(0.7),
+              color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.7),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             '\$${doubleFormat(balance)}',
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 40,
-            ),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
           ),
           const SizedBox(height: 16),
           _cardList(),
@@ -145,8 +132,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               for (final account in _moneyAccounts) {
                 account.isSelected = moneyAccount.name == account.name;
               }
-              Navigator.pushNamed(context, CardDetailScreen.routeName,
-                  arguments: _moneyAccounts);
+              Navigator.pushNamed(context, CardDetailScreen.routeName, arguments: _moneyAccounts);
             },
             child: MoneyAccountCard(
               moneyAccount: moneyAccount,
@@ -209,9 +195,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Text(
                       doubleFormat(currency.price.usd.price),
                       style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                          color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     const Text(
                       ' USD',
@@ -237,40 +221,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return [
       Padding(
           padding: padding,
-          child: TransactionCard(Transaction(
-              1000, "Bob", "transfer", "2021-12-06T03:06:55.668Z"))),
-      Padding(
-          padding: padding,
-          child: TransactionCard(Transaction(
-              -2000, "Shopping", "shopping", "2021-12-05T03:06:55.668Z"))),
+          child: TransactionCard(Transaction(1000, "Bob", "transfer", "2021-12-06T03:06:55.668Z"))),
       Padding(
           padding: padding,
           child: TransactionCard(
-              Transaction(500, "Alex", "transfer", "2021-11-01T03:06:55.668Z")))
+              Transaction(-2000, "Shopping", "shopping", "2021-12-05T03:06:55.668Z"))),
+      Padding(
+          padding: padding,
+          child: TransactionCard(Transaction(500, "Alex", "transfer", "2021-11-01T03:06:55.668Z")))
     ];
   }
 
   @override
   void initState() {
-    _moneyAccounts.add(MoneyAccount(
-        "VISA", 'Mastercard .9090', Constants.icMasterCard, 3520.45));
-    _moneyAccounts.add(MoneyAccount(
-        "Paypal", 'group22@gmail.com', Constants.icPaypal, 2158.45));
+    _moneyAccounts.add(MoneyAccount("VISA", 'Mastercard .9090', Constants.icMasterCard, 3520.45));
+    _moneyAccounts.add(MoneyAccount("Paypal", 'group22@gmail.com', Constants.icPaypal, 2158.45));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DashboardBloc>(
-      create: (context) =>
-          DashboardBloc(RepositoryProvider.of<CryptoRepository>(context))
-            ..add(DashboardInitializeEvent()),
+      create: (context) => DashboardBloc(RepositoryProvider.of<CryptoRepository>(context))
+        ..add(DashboardInitializeEvent()),
       child: BlocConsumer<DashboardBloc, DashboardState>(
         listener: _setListener,
         builder: (context, state) {
           return Scaffold(
             appBar: _buildAppBar(),
-            backgroundColor: Colors.white,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: ListView(
               children: [
                 const SizedBox(height: 40),

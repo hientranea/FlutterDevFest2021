@@ -29,7 +29,7 @@ class RoundedCard extends StatelessWidget {
         borderRadius: const BorderRadius.all(
           Radius.circular(20.0),
         ),
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,9 +63,9 @@ class RoundedCard extends StatelessWidget {
                 ),
                 Text(
                   time,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black45,
+                    color: Theme.of(context).textTheme.bodyText1!.color,
                   ),
                 ),
               ],
