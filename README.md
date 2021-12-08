@@ -3,6 +3,10 @@ Team 22
 
 An app built for [DevFest 20201 - Flutter Challenge](https://devfesthcm.com/).
 
+## Demo video
+
+[![Watch the video](https://lifelegaldefensefoundation.org/wp-content/uploads/2016/04/youtube-video-play-icon.png)](https://youtu.be/bdK3O_wVmns)
+
 ## Features
 
 ### View crypto currency price
