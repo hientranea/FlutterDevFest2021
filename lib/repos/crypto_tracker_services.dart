@@ -42,12 +42,12 @@ class CryptoTrackerServicesImpl implements CryptoTrackerServices {
       _dio.options.baseUrl = Constants.urlBase;
       _dio.options.connectTimeout = Constants.connectionTimeout;
       _dio.options.receiveTimeout = Constants.connectionTimeout;
-      _dio.interceptors.add(LogInterceptor(
-        request: false,
-        requestHeader: false,
-        responseHeader: false,
-        responseBody: true,
-      ));
+      // _dio.interceptors.add(LogInterceptor(
+      //   request: false,
+      //   requestHeader: false,
+      //   responseHeader: false,
+      //   responseBody: true,
+      // ));
     }
     _isCreated = true;
     _dio.options.headers = await _buildHeader();
