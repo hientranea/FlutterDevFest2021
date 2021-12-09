@@ -23,17 +23,17 @@ class CashBackTitle extends StatelessWidget {
             ),
           ),
           Row(
-            children: const [
+            children:  [
               Text(
                 'See all',
                 style: TextStyle(
-                  color: CryptoTrackerColors.primaryColor,
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               Icon(
                 Icons.navigate_next_outlined,
-                color: CryptoTrackerColors.primaryColor,
+                color: Theme.of(context).primaryColor,
               ),
             ],
           )

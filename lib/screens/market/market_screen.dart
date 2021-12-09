@@ -26,8 +26,7 @@ class _MarketScreenState extends State<MarketScreen> {
   AppBar _buildAppBar() {
     return AppBar(
       title: const Text(
-        'Market 24h',
-        style: TextStyle(color: Colors.black),
+        'Market 24h'
       ),
     );
   }
@@ -53,8 +52,9 @@ class _MarketScreenState extends State<MarketScreen> {
     final color = currency.price.usd.volumeChange24h >= 0 ? Colors.green : Colors.red;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, CurrencyDetailScreen.routeName);
+        Navigator.pushNamed(context, CurrencyDetailScreen.routeName, arguments: currency);
       },
+      behavior: HitTestBehavior.translucent,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 12),
         child: Column(

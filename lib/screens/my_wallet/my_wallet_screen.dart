@@ -45,8 +45,9 @@ class MyWalletScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 20),
                     ),
                     IconButton(
-                      icon: const Icon(
+                      icon:  Icon(
                         Icons.add,
+                        color: Theme.of(context).primaryColor,
                       ),
                       onPressed: () {},
                     ),
@@ -162,32 +163,32 @@ class MyWalletScreen extends StatelessWidget {
         children: [
           MenuIcon(
             label: 'Dashboard',
-            icon: const Icon(Icons.dashboard_outlined),
+            icon:  Icon(Icons.dashboard_outlined, color: Theme.of(context).primaryColor),
             onTap: () {},
           ),
           MenuIcon(
             label: 'Set Limits',
-            icon: const Icon(FontAwesomeIcons.lessThanEqual),
+            icon: Icon(FontAwesomeIcons.lessThanEqual, color: Theme.of(context).primaryColor),
             onTap: () {},
           ),
           MenuIcon(
             label: 'Withdraw',
-            icon: const Icon(FontAwesomeIcons.moneyCheck),
+            icon:  Icon(FontAwesomeIcons.moneyCheck, color: Theme.of(context).primaryColor),
             onTap: () {},
           ),
           MenuIcon(
             label: 'Load Funds',
-            icon: const Icon(FontAwesomeIcons.moneyBillAlt),
+            icon:  Icon(FontAwesomeIcons.moneyBillAlt, color: Theme.of(context).primaryColor),
             onTap: () {},
           ),
           MenuIcon(
             label: 'Transfer',
-            icon: const Icon(FontAwesomeIcons.exchangeAlt),
+            icon:  Icon(FontAwesomeIcons.exchangeAlt, color: Theme.of(context).primaryColor),
             onTap: () => Navigator.pushNamed(context, '/transfer'),
           ),
           MenuIcon(
             label: 'Block Card',
-            icon: const Icon(FontAwesomeIcons.ccDinersClub),
+            icon:  Icon(FontAwesomeIcons.ccDinersClub, color: Theme.of(context).primaryColor),
             onTap: () {},
           ),
         ],
@@ -235,10 +236,13 @@ class CardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 20),
-      child: SizedBox(
-        height: 200,
-        child: Image.asset(
-          imagePath,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: SizedBox(
+          height: 200,
+          child: Image.asset(
+            imagePath,
+          ),
         ),
       ),
     );

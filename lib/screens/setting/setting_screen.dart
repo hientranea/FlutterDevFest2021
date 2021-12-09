@@ -1,4 +1,5 @@
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
+import 'package:crypto_tracker/repos/local/app_preferences.dart';
 import 'package:crypto_tracker/screens/app/app_bloc.dart';
 import 'package:crypto_tracker/screens/app/app_event.dart';
 import 'package:crypto_tracker/utils/utils.dart';
@@ -25,18 +26,17 @@ class SettingScreen extends StatelessWidget {
             fontSize: 20,
           ),
         ),
-        backgroundColor:
-            isDarkMode() ? CryptoTrackerColors.darkBackground : CryptoTrackerColors.appBarShadow,
-        iconTheme: IconThemeData(
-            color: isDarkMode() ? const Color(0xFFF6F6F6) : CryptoTrackerColors.heading),
       ),
       body: Column(
         children: <Widget>[
           SwitchListTile(
             title: const Text("Dark mode"),
             value: isDarkMode(),
+            activeColor:  Theme.of(context).primaryColor,
             onChanged: (value) {
-              BlocProvider.of<AppBloc>(context).add(ChangeDarkModeEvent(value));
+              final appBloc = BlocProvider.of<AppBloc>(context);
+              appBloc.preferences.setDarkMode(value);
+              appBloc.add(ChangeDarkModeEvent(value));
             },
           )
         ],

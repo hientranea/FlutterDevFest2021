@@ -1,4 +1,5 @@
 import 'package:crypto_tracker/config/crypto_tracker_color.dart';
+import 'package:crypto_tracker/repos/models/crypto_currency.dart';
 import 'package:crypto_tracker/repos/models/currency_price.dart';
 import 'package:crypto_tracker/repos/remote/crypto_repository.dart';
 import 'package:crypto_tracker/screens/common/price_chart.dart';
@@ -15,7 +16,9 @@ import 'market_card.dart';
 class CurrencyDetailScreen extends StatefulWidget {
   static const routeName = "/currency_detail";
 
-  const CurrencyDetailScreen({Key? key}) : super(key: key);
+  final CryptoCurrency currency;
+
+  const CurrencyDetailScreen({Key? key,required this.currency}) : super(key: key);
 
   @override
   State<CurrencyDetailScreen> createState() => _CurrencyDetailScreenState();
@@ -37,24 +40,19 @@ class _CurrencyDetailScreenState extends State<CurrencyDetailScreen> {
             appBar: AppBar(
               centerTitle: true,
               title: Text(
-                "Activity",
+                widget.currency.name,
                 style: TextStyle(
                   color: Theme.of(context).textTheme.bodyText1!.color,
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: isDarkMode()
-                  ? CryptoTrackerColors.darkBackground
-                  : CryptoTrackerColors.appBarShadow,
-              iconTheme: IconThemeData(
-                  color: isDarkMode() ? const Color(0xFFF6F6F6) : CryptoTrackerColors.heading),
             ),
             body: ListView(
               children: [
                 Container(
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 30),
-                  child: PriceChart("BTC", _priceHistories),
+                  child: PriceChart(widget.currency.symbol, _priceHistories),
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -69,14 +67,14 @@ class _CurrencyDetailScreenState extends State<CurrencyDetailScreen> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text(
+                        children:  [
+                          const Text(
                             "Market",
                             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text("See all >",
                               style:
-                                  TextStyle(fontSize: 15, color: CryptoTrackerColors.primaryColor)),
+                                  TextStyle(fontSize: 15, color: Theme.of(context).primaryColor)),
                         ],
                       ),
                       const SizedBox(height: 20),

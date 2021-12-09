@@ -12,10 +12,12 @@ class TransactionHistoriesScreen extends StatefulWidget {
   const TransactionHistoriesScreen({Key? key}) : super(key: key);
 
   @override
-  State<TransactionHistoriesScreen> createState() => _TransactionHistoriesScreenState();
+  State<TransactionHistoriesScreen> createState() =>
+      _TransactionHistoriesScreenState();
 }
 
-class _TransactionHistoriesScreenState extends State<TransactionHistoriesScreen> {
+class _TransactionHistoriesScreenState
+    extends State<TransactionHistoriesScreen> {
   late TransactionHistoriesBloc _bloc;
   List<Transaction> _transactions = [];
   bool _showDateFilter = false;
@@ -23,11 +25,63 @@ class _TransactionHistoriesScreenState extends State<TransactionHistoriesScreen>
   List<Widget> _dateFilter() {
     return [
       SfDateRangePicker(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        selectionColor: Theme.of(context).primaryColor,
+        startRangeSelectionColor: Theme.of(context).primaryColor,
+        endRangeSelectionColor: Theme.of(context).primaryColor,
+        todayHighlightColor: Theme.of(context).primaryColor,
+        rangeSelectionColor: Theme.of(context).primaryColor.withOpacity(0.1),
+        selectionTextStyle: TextStyle(
+          color: Theme.of(context).cardColor,
+        ),
+        rangeTextStyle: TextStyle(
+          color: Theme.of(context).textTheme.bodyText1!.color,
+        ),
+        monthCellStyle: DateRangePickerMonthCellStyle(
+          textStyle: TextStyle(
+            color: Theme.of(context).textTheme.bodyText1!.color,
+          ),
+          disabledDatesTextStyle: TextStyle(
+            color:
+                Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.5),
+          ),
+          todayTextStyle: TextStyle(
+            color: Theme.of(context).primaryColor,
+          ),
+        ),
+        monthViewSettings: DateRangePickerMonthViewSettings(
+          viewHeaderStyle: DateRangePickerViewHeaderStyle(
+            textStyle: TextStyle(
+              color: Theme.of(context).primaryColor.withOpacity(0.5),
+            ),
+          ),
+        ),
+        headerStyle: DateRangePickerHeaderStyle(
+          textStyle: TextStyle(
+            color: Theme.of(context).textTheme.bodyText1!.color,
+          ),
+        ),
+        yearCellStyle: DateRangePickerYearCellStyle(
+          textStyle: TextStyle(
+            color: Theme.of(context).textTheme.bodyText1!.color,
+          ),
+          todayTextStyle: TextStyle(
+            color: Theme.of(context).primaryColor,
+          ),
+          disabledDatesTextStyle: TextStyle(
+            color: Theme.of(context).textTheme.bodyText1!.color,
+          ),
+          leadingDatesTextStyle: TextStyle(
+            color: Theme.of(context).textTheme.bodyText1!.color,
+          ),
+        ),
         onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
           _bloc.add(ChangeDateFilter(args));
         },
         selectionMode: DateRangePickerSelectionMode.range,
-        initialSelectedRange: PickerDateRange(DateTime.now().subtract(const Duration(days: 4)),
+        maxDate: DateTime.now(),
+        initialSelectedRange: PickerDateRange(
+            DateTime.now().subtract(const Duration(days: 4)),
             DateTime.now().add(const Duration(days: 3))),
       ),
       Row(
@@ -41,7 +95,9 @@ class _TransactionHistoriesScreenState extends State<TransactionHistoriesScreen>
             child: Container(
               child: Text(
                 "Apply",
-                style: TextStyle(color: Theme.of(context).cardColor, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Theme.of(context).cardColor,
+                    fontWeight: FontWeight.bold),
               ),
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               decoration: BoxDecoration(
@@ -58,7 +114,9 @@ class _TransactionHistoriesScreenState extends State<TransactionHistoriesScreen>
             child: Container(
               child: Text(
                 "Show all",
-                style: TextStyle(color: Theme.of(context).cardColor, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Theme.of(context).cardColor,
+                    fontWeight: FontWeight.bold),
               ),
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               decoration: BoxDecoration(
@@ -75,9 +133,9 @@ class _TransactionHistoriesScreenState extends State<TransactionHistoriesScreen>
   @override
   Widget build(BuildContext context) {
     return BlocProvider<TransactionHistoriesBloc>(
-      create: (context) =>
-          TransactionHistoriesBloc(RepositoryProvider.of<CryptoRepository>(context))
-            ..add(TransactionHistoriesInitializeEvent()),
+      create: (context) => TransactionHistoriesBloc(
+          RepositoryProvider.of<CryptoRepository>(context))
+        ..add(TransactionHistoriesInitializeEvent()),
       child: BlocConsumer<TransactionHistoriesBloc, TransactionHistoriesState>(
         listener: _setListener,
         builder: (context, state) {
@@ -85,14 +143,19 @@ class _TransactionHistoriesScreenState extends State<TransactionHistoriesScreen>
           return SafeArea(
             child: Scaffold(
               body: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Date",
                       style: TextStyle(
-                          color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.5),
+                          color: Theme.of(context)
+                              .textTheme
+                              .bodyText1!
+                              .color!
+                              .withOpacity(0.5),
                           fontWeight: FontWeight.bold),
                     ),
                     Row(
@@ -100,13 +163,17 @@ class _TransactionHistoriesScreenState extends State<TransactionHistoriesScreen>
                       children: [
                         const Text(
                           "All",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                         GestureDetector(
                           onTap: () {
                             _bloc.add(ToggleDateFilter(!_showDateFilter));
                           },
-                          child: const Icon(Icons.calendar_today_outlined),
+                          child: Icon(
+                            Icons.calendar_today_outlined,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         )
                       ],
                     ),
