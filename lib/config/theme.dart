@@ -6,18 +6,27 @@ class CryptoTrackerTheme {
   static ThemeData lightMode(BuildContext context) {
     return ThemeData(
       primaryColor: CryptoTrackerColors.primaryColor,
-      scaffoldBackgroundColor: Colors.white,
-      unselectedWidgetColor: CryptoTrackerColors.primaryColor,
-      cardColor: Colors.white,
+      scaffoldBackgroundColor: CryptoTrackerColors.scaffoldBackgroundColor,
+      unselectedWidgetColor: Theme.of(context).primaryColor,
+      cardColor: CryptoTrackerColors.scaffoldBackgroundColor,
       shadowColor: CryptoTrackerColors.containerShadow,
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(primary: CryptoTrackerColors.smokyBlack),
       ),
-      appBarTheme:
-          const AppBarTheme(elevation: 0.0, backgroundColor: Colors.white),
+      appBarTheme: const AppBarTheme(
+        elevation: 0,
+        backgroundColor: CryptoTrackerColors.scaffoldBackgroundColor,
+        iconTheme: IconThemeData(color: Colors.black),
+        titleTextStyle: TextStyle(
+          color: Colors.black,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          fontFamily: 'Oxygen',
+        ),
+      ),
       textTheme: Theme.of(context).textTheme.apply(
             fontFamily: 'Oxygen',
-            bodyColor: CryptoTrackerColors.smokyBlack,
+            bodyColor: Colors.black,
           ),
       colorScheme: ColorScheme.fromSwatch()
           .copyWith(secondary: CryptoTrackerColors.accentColor),
@@ -27,22 +36,30 @@ class CryptoTrackerTheme {
   static ThemeData darkMode(BuildContext context) {
     return ThemeData(
       primaryColor: CryptoTrackerColors.darkPrimaryColor,
-      scaffoldBackgroundColor: CryptoTrackerColors.darkBackground,
-      canvasColor: CryptoTrackerColors.darkBackground,
+      scaffoldBackgroundColor: CryptoTrackerColors.darkScaffoldBackgroundColor,
       unselectedWidgetColor: CryptoTrackerColors.darkPrimaryColor,
-      cardColor: CryptoTrackerColors.darkCardBackground,
+      cardColor: CryptoTrackerColors.darkScaffoldBackgroundColor,
       shadowColor: CryptoTrackerColors.containerShadow,
-      iconTheme: const IconThemeData(color: Color(0xFFF6F6F6)),
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(primary: const Color(0xFFF6F6F6)),
+        style: TextButton.styleFrom(primary: CryptoTrackerColors.smokyBlack),
       ),
       appBarTheme: const AppBarTheme(
-          elevation: 0.0,
-          backgroundColor: CryptoTrackerColors.darkPrimaryColor),
+        elevation: 0,
+        backgroundColor: CryptoTrackerColors.darkScaffoldBackgroundColor,
+        iconTheme: IconThemeData(color: Colors.white),
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          fontFamily: 'Oxygen',
+        ),
+      ),
       textTheme: Theme.of(context).textTheme.apply(
             fontFamily: 'Oxygen',
-            bodyColor: const Color(0xFFF6F6F6),
+            bodyColor: Colors.white,
           ),
+      colorScheme: ColorScheme.fromSwatch()
+          .copyWith(secondary: CryptoTrackerColors.accentColor),
     );
   }
 }

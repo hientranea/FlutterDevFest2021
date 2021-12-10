@@ -31,7 +31,7 @@ class AppBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: CryptoTrackerColors.primaryColor,
+      color: Theme.of(context).primaryColor,
       child: BottomNavigationBar(
         backgroundColor: isDarkMode() ? CryptoTrackerColors.darkBackground : CryptoTrackerColors.bottomBarBackground,
         items: allTabs.map((HomeTab tab) {

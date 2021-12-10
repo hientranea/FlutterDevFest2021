@@ -48,6 +48,9 @@ class CryptoTracker extends StatelessWidget {
             Widget home = Container();
 
             if (state is AppReady) {
+              final isDarkMode = BlocProvider.of<AppBloc>(context).preferences.isDarkMode ?? false;
+              themeMode = isDarkMode ? ThemeMode.dark : ThemeMode.light;
+
               home = BlocProvider(
                 create: (context) => SplashBloc()..add(SplashInitializeEvent()),
                 child: const SplashScreen(),

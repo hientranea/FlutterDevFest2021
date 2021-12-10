@@ -24,7 +24,8 @@ class SplashScreen extends StatelessWidget {
           }
         },
         child: Container(
-          color: Colors.white,
+          // color: Theme.of(context).scaffoldBackgroundColor,
+          color: Colors.white, // ic_splash_logo đang có background màu trắng
           alignment: Alignment.center,
           child: Image.asset(Constants.icSplashLogo, width: widthScreen / 2),
         ),

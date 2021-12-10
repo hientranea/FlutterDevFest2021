@@ -1,12 +1,10 @@
 import 'package:collection/collection.dart';
-import 'package:crypto_tracker/config/crypto_tracker_color.dart';
 import 'package:crypto_tracker/repos/models/crypto_currency.dart';
 import 'package:crypto_tracker/repos/models/money_account.dart';
 import 'package:crypto_tracker/repos/models/transaction.dart';
 import 'package:crypto_tracker/repos/remote/crypto_repository.dart';
 import 'package:crypto_tracker/screens/card_detail/card_detail_screen.dart';
 import 'package:crypto_tracker/screens/card_detail/card_list.dart';
-import 'package:crypto_tracker/screens/card_detail/money_account_card_widget.dart';
 import 'package:crypto_tracker/screens/currencydetail/currency_detail_screen.dart';
 import 'package:crypto_tracker/screens/dashboard/dashboard_bloc.dart';
 import 'package:crypto_tracker/screens/home/home_bloc.dart';
@@ -40,10 +38,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-            color: CryptoTrackerColors.primaryColor,
+            color: Theme.of(context).primaryColor,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: const Icon(Icons.storm),
+          child: const Icon(Icons.storm, color: Colors.white,),
         ),
       ),
       actions: [
@@ -89,9 +87,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 final bloc = BlocProvider.of<HomeBloc>(context);
                 bloc.add(SelectTabEvent(2));
               },
-              child: const Text("See all >",
+              child:  Text("See all >",
                   style: TextStyle(
-                      fontSize: 15, color: CryptoTrackerColors.primaryColor)),
+                      fontSize: 15, color: Theme.of(context).primaryColor)),
             ),
         ],
       ),
@@ -136,7 +134,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         final currency = _cryptoCurrencies[index];
         return GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, CurrencyDetailScreen.routeName);
+            Navigator.pushNamed(context, CurrencyDetailScreen.routeName, arguments: currency);
           },
           child: Container(
             height: 100,

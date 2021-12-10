@@ -13,7 +13,7 @@ class PremiumAccountPromote extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border.all(color: CryptoTrackerColors.primaryColor),
+        border: Border.all(color: Theme.of(context).primaryColor),
         borderRadius: const BorderRadius.all(
           Radius.circular(20.0),
         ),
@@ -39,7 +39,7 @@ class PremiumAccountPromote extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(CryptoTrackerColors.primaryColor),
+                backgroundColor: MaterialStateProperty.all(Theme.of(context).primaryColor),
                 padding: MaterialStateProperty.all(
                   const EdgeInsets.all(15.0),
                 ),

@@ -25,7 +25,7 @@ class MoneyAccountCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
-              color: CryptoTrackerColors.primaryColor,
+              color: Theme.of(context).primaryColor,
               width: 1,
             ),
           ),
@@ -67,9 +67,9 @@ class MoneyAccountCard extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Icon(
+              child:  Icon(
                 Icons.check_circle,
-                color: CryptoTrackerColors.primaryColor,
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),

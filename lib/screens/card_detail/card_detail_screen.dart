@@ -29,19 +29,11 @@ class CardDetailScreen extends StatelessWidget {
             fontSize: 20,
           ),
         ),
-        backgroundColor: isDarkMode()
-            ? CryptoTrackerColors.darkBackground
-            : CryptoTrackerColors.appBarShadow,
-        iconTheme: IconThemeData(
-            color: isDarkMode()
-                ? const Color(0xFFF6F6F6)
-                : CryptoTrackerColors.heading),
         actions: <Widget>[
           IconButton(
             icon: const Icon(
               Icons.add,
               size: 24,
-              color: CryptoTrackerColors.smokyBlack,
             ),
             onPressed: () {},
           ),
