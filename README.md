@@ -1,7 +1,8 @@
 # Crypto Tracker
-Team 22
 
-An app built for [DevFest 20201 - Flutter Challenge](https://devfesthcm.com/).
+The app was developed for the Flutter Hackathon competition at DevFest HCM 2021. My team won 2nd place 🎉🥈🎉
+
+An app built for [DevFest 20201 - Flutter Challenge](https://gdg.community.dev/events/details/google-gdg-ho-chi-minh-city-presents-devfest-hcmc-2021/).
 
 ## Demo video
 
@@ -13,24 +14,24 @@ An app built for [DevFest 20201 - Flutter Challenge](https://devfesthcm.com/).
 
 Data is fetched directly from [CoinMarketCap](https://coinmarketcap.com/api/documentation/v1/#section/Introduction).
 
-<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/home_screen.png" width="400"/> <img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/crypto_currency_detail.png" width="400"/>
+<img src="./screenshots/home_screen.png" width="400"/> <img src="./screenshots/crypto_currency_detail.png" width="400"/>
 
 
 ### Manage transaction history
 
 Users can manage their transactions and filter the data by date
 
-<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transaction_histories.png" width="400"/> <img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transaction_filter_by_date.png" width="400"/>
+<img src="./screenshots/transaction_histories.png" width="400"/> <img src="./screenshots/transaction_filter_by_date.png" width="400"/>
 
 
 ### Manage payment cards
-<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/card_detail.png" width="400"/>
+<img src="./screenshots/card_detail.png" width="400"/>
 
 ### Manage payment wallet
-<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/my_wallet.png" width="400"/>
+<img src="./screenshots/my_wallet.png" width="400"/>
 
 ### Transfer
-<img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transfer1.png" width="400"/> <img src="https://raw.githubusercontent.com/hientranea/FlutterDevFest2021/main/screenshots/transfer2.png" width="400"/>
+<img src="./screenshots/transfer1.png" width="400"/> <img src="./screenshots/transfer2.png" width="400"/>
 
 ### Others
 
